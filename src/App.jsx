@@ -26,6 +26,9 @@ import heroVideoAsset from "../assets/video1.mp4";
 const whatsappNumber = "917862001700";
 const contactEmail = "Hello@sninfosys.com";
 const googleReviewUrl = "https://www.google.com/maps/place//data=!4m3!3m2!1s0x390ce3f64371429b:0x266f1d2579f448cb!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2";
+const indiaMartUrl = "https://www.indiamart.com/sn-infosystems/";
+const indiaMartProfileUrl = "https://www.indiamart.com/sninfosystems/profile.html";
+const justdialUrl = "https://jsdl.in/DT-23S4SKXN";
 const whatsappLink = (message = "Hi SN Infosystem, I'd like to know more about your products and services.") =>
   `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
@@ -33,8 +36,8 @@ const footerLogos = [
   { name: "ISO", image: isoLogoAsset },
   { name: "MSME", image: msmeLogoAsset },
   { name: "GeM", image: gemLogoAsset },
-  { name: "IndiaMART", image: indiaMartLogoAsset },
-  { name: "Justdial", image: justdialLogoAsset },
+  { name: "IndiaMART", image: indiaMartLogoAsset, href: indiaMartUrl },
+  { name: "Justdial", image: justdialLogoAsset, href: justdialUrl },
 ];
 
 const iconShapes = {
@@ -488,11 +491,20 @@ function App() {
           <span className="footer-label">OUR CREDENTIALS</span>
           <div className="footer-badges">
             {footerLogos.map((item) => (
-              <div className="footer-badge" key={item.name}>
-                <img src={item.image} alt={item.name} loading="lazy" />
-              </div>
+              item.href ? (
+                <a className="footer-badge" href={item.href} key={item.name} target="_blank" rel="noreferrer" aria-label={`Visit SN Infosystem on ${item.name}`}>
+                  <img src={item.image} alt={item.name} loading="lazy" />
+                </a>
+              ) : (
+                <div className="footer-badge" key={item.name}>
+                  <img src={item.image} alt={item.name} loading="lazy" />
+                </div>
+              )
             ))}
           </div>
+          <a className="footer-profile-link" href={indiaMartProfileUrl} target="_blank" rel="noreferrer">
+            About us on IndiaMART <span aria-hidden="true">↗</span>
+          </a>
           <a className="footer-review-link" href={googleReviewUrl} target="_blank" rel="noreferrer">
             <span>Google Reviews</span>
             <strong>Write a review <span aria-hidden="true">↗</span></strong>

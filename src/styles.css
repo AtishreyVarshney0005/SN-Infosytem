@@ -212,11 +212,14 @@ h1, h2, h3, p, figure { margin-top: 0; }
 .social-icon:nth-child(2) .social-dot { fill: currentColor; stroke: none; }
 .footer-bottom { min-height: 52px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,.1); color: #8d96a8; font-size: 10px; }
 .footer-bottom a { color: #bbc1cd; }
-.footer-trust { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; padding-top: 21px; padding-bottom: 21px; border-top: 1px solid rgba(255,255,255,.1); }
+.footer-trust { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 20px; padding-top: 21px; padding-bottom: 21px; border-top: 1px solid rgba(255,255,255,.1); }
 .footer-trust > .footer-label { margin: 0; white-space: nowrap; }
 .footer-badges { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 9px; }
 .footer-badge { display: grid; place-items: center; width: 82px; height: 66px; padding: 6px; background: #fff; border: 1px solid rgba(255,255,255,.15); border-radius: 4px; }
 .footer-badge img { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; object-position: center; }
+.footer-profile-link { color: #d4d8e1; font-size: 11px; white-space: nowrap; }
+.footer-profile-link span { color: #e8798b; }
+.footer-profile-link:hover { color: #f07c8d; }
 .footer-review-link { display: grid; gap: 4px; color: #d4d8e1; font-size: 11px; }
 .footer-review-link strong { color: #fff; font-size: 12px; font-weight: 600; }
 .footer-review-link strong span { color: #e8798b; }
