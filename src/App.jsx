@@ -258,7 +258,6 @@ function App() {
                 src={heroSlides[activeHeroSlide].src}
                 alt={heroSlides[activeHeroSlide].alt}
               />
-              <div className="slide-shade" />
               <div className="carousel-indicators" aria-label="Choose a slide">
                 {heroSlides.map((slide, index) => (
                   <button

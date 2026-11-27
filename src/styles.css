@@ -66,7 +66,6 @@ h1, h2, h3, p, figure { margin-top: 0; }
 .hero-carousel .hero-visual::before { display: none; }
 .hero-carousel .visual-frame { height: 100%; border-radius: 0; box-shadow: none; }
 .hero-slide { width: 100%; height: 100%; object-fit: cover; animation: carousel-fade .4s ease both; }
-.slide-shade { position: absolute; inset: 0; background: linear-gradient(180deg,rgba(13,20,36,.04) 35%,rgba(13,20,36,.3) 100%); pointer-events: none; }
 .carousel-indicator:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .carousel-indicators { position: absolute; z-index: 1; right: 0; bottom: 24px; left: 0; display: flex; width: max-content; justify-content: center; gap: 8px; margin: 0 auto; padding: 8px 11px; background: rgba(255,255,255,.62); border: 1px solid rgba(255,255,255,.55); border-radius: 999px; box-shadow: 0 5px 16px rgba(13,20,36,.14); backdrop-filter: blur(10px); }
 .carousel-indicator { width: 8px; height: 8px; padding: 0; background: rgba(23,33,58,.28); border: 0; border-radius: 999px; cursor: pointer; transition: width .3s ease, background .3s ease; }
@@ -271,7 +270,8 @@ h1, h2, h3, p, figure { margin-top: 0; }
   .topline-inner { min-height: 32px; font-size: 9px; }
   .topline-inner > span { max-width: 55%; }
   .nav-wrap { height: 68px; }
-  .hero.hero-carousel { width: min(100%, 1440px); margin: 12px auto; border-radius: 0; }
+  .hero.hero-carousel { width: min(100%, 1440px); aspect-ratio: 16 / 10; margin: 12px auto; border-radius: 0; }
+  .hero-slide { object-position: left center; }
   .brand img { width: 41px; height: 41px; }
   .brand { font-size: 13px; }
   .menu-toggle { display: flex; flex-direction: column; gap: 5px; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 5px; background: rgba(255,255,255,.7); cursor: pointer; }
