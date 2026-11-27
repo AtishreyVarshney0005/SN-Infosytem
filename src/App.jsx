@@ -29,6 +29,7 @@ import mobileCarouselOneImage from "../assets/crousel1-mobile.png";
 import mobileCarouselTwoImage from "../assets/crousel2-mobile.png";
 import mobileCarouselThreeImage from "../assets/crousel3-mobile.png";
 import mobileCarouselFourImage from "../assets/crousel4-mobile.png";
+import footerVideoAsset from "../assets/video1.mp4";
 
 const whatsappNumber = "917862001700";
 const contactEmail = "Hello@sninfosys.com";
@@ -458,6 +459,12 @@ function App() {
             </div>
             <div className="contact-bubble" aria-hidden="true">SN</div>
           </div>
+        </section>
+        <section className="footer-video-section" aria-label="SN Infosystem technology showcase">
+          <video className="footer-video" autoPlay muted loop playsInline aria-hidden="true">
+            <source src={footerVideoAsset} type="video/mp4" />
+          </video>
+          <div className="footer-video-overlay" aria-hidden="true" />
         </section>
       </main>
 

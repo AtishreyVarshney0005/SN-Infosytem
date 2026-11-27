@@ -193,6 +193,10 @@ h1, h2, h3, p, figure { margin-top: 0; }
 .orbit-one { width: 470px; height: 470px; right: 60px; top: -215px; }
 .orbit-two { width: 340px; height: 340px; right: 125px; top: -150px; }
 
+.footer-video-section { position: relative; width: min(100%, 1440px); height: auto; aspect-ratio: 48 / 17; margin: 24px auto; overflow: hidden; background: #121a2d; border-radius: 12px; }
+.footer-video { width: 100%; height: 100%; object-fit: cover; filter: blur(6px); transform: scale(1.1); }
+.footer-video-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18,26,45,.08), rgba(18,26,45,.35)); pointer-events: none; }
+
 .site-footer { color: #fff; background: #121a2d; }
 .footer-main { display: grid; grid-template-columns: 1fr 1.6fr .8fr; gap: 52px; align-items: start; padding-top: 43px; padding-bottom: 37px; }
 .brand-footer img { width: 64px; height: 64px; padding: 2px; object-fit: contain; mix-blend-mode: normal; background: white; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; box-shadow: 0 5px 16px rgba(0,0,0,.2); }
@@ -272,6 +276,7 @@ h1, h2, h3, p, figure { margin-top: 0; }
   .topline-inner > span { max-width: 55%; }
   .nav-wrap { width: 100%; max-width: none; height: 68px; margin: 0; padding: 0 16px; }
   .hero.hero-carousel { width: min(100%, 1440px); aspect-ratio: 16 / 10; margin: 12px auto; border-radius: 0; }
+  .footer-video-section { width: min(100%, 1440px); aspect-ratio: 16 / 10; margin: 12px auto; border-radius: 0; }
   .hero-slide { object-position: left center; }
   .brand img { width: 41px; height: 41px; }
   .brand { font-size: 13px; }
