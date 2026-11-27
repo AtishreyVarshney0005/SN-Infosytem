@@ -25,6 +25,10 @@ import carouselOneImage from "../assets/crousel1.png";
 import carouselTwoImage from "../assets/crousel2.png";
 import carouselThreeImage from "../assets/crousel3.png";
 import carouselFourImage from "../assets/crousel4.png";
+import mobileCarouselOneImage from "../assets/crousel1-mobile.png";
+import mobileCarouselTwoImage from "../assets/crousel2-mobile.png";
+import mobileCarouselThreeImage from "../assets/crousel3-mobile.png";
+import mobileCarouselFourImage from "../assets/crousel4-mobile.png";
 
 const whatsappNumber = "917862001700";
 const contactEmail = "Hello@sninfosys.com";
@@ -143,10 +147,10 @@ const portfolioImages = [
 ];
 
 const heroSlides = [
-  { src: carouselOneImage, alt: "Promotional banner for desktop computer rentals across India", title: "Desktop rentals across India" },
-  { src: carouselTwoImage, alt: "Promotional banner for laptops available to rent for business needs", title: "Laptop rentals for business" },
-  { src: carouselThreeImage, alt: "Promotional banner for printers, plotters and scanners available for rent", title: "Printers and scanners for rent" },
-  { src: carouselFourImage, alt: "Promotional banner for server rentals across India", title: "Server rentals across India" },
+  { src: carouselOneImage, mobileSrc: mobileCarouselOneImage, alt: "Promotional banner for desktop computer rentals across India", title: "Desktop rentals across India" },
+  { src: carouselTwoImage, mobileSrc: mobileCarouselTwoImage, alt: "Promotional banner for laptops available to rent for business needs", title: "Laptop rentals for business" },
+  { src: carouselThreeImage, mobileSrc: mobileCarouselThreeImage, alt: "Promotional banner for printers, plotters and scanners available for rent", title: "Printers and scanners for rent" },
+  { src: carouselFourImage, mobileSrc: mobileCarouselFourImage, alt: "Promotional banner for server rentals across India", title: "Server rentals across India" },
 ];
 
 const steps = [
@@ -252,12 +256,19 @@ function App() {
         <section className="hero hero-carousel" id="home">
           <div className="hero-visual" data-reveal>
             <div className="visual-frame">
-              <img
-                key={heroSlides[activeHeroSlide].title}
-                className="hero-slide"
-                src={heroSlides[activeHeroSlide].src}
-                alt={heroSlides[activeHeroSlide].alt}
-              />
+              <picture className="hero-slide-picture" key={heroSlides[activeHeroSlide].title}>
+                {heroSlides[activeHeroSlide].mobileSrc && (
+                  <source
+                    media="(max-width: 650px)"
+                    srcSet={heroSlides[activeHeroSlide].mobileSrc}
+                  />
+                )}
+                <img
+                  className="hero-slide"
+                  src={heroSlides[activeHeroSlide].src}
+                  alt={heroSlides[activeHeroSlide].alt}
+                />
+              </picture>
               <div className="carousel-indicators" aria-label="Choose a slide">
                 {heroSlides.map((slide, index) => (
                   <button
