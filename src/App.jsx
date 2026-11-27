@@ -21,7 +21,10 @@ import bulkLaptopInventoryImage from "../assets/13.jpeg";
 import warehouseLaptopsImage from "../assets/14.jpeg";
 import rentalLaptopStockImage from "../assets/15.jpeg";
 import desktopInventoryImage from "../assets/16.jpeg";
-import heroVideoAsset from "../assets/video1.mp4";
+import carouselOneImage from "../assets/crousel1.png";
+import carouselTwoImage from "../assets/crousel2.png";
+import carouselThreeImage from "../assets/crousel3.png";
+import carouselFourImage from "../assets/crousel4.png";
 
 const whatsappNumber = "917862001700";
 const contactEmail = "Hello@sninfosys.com";
@@ -139,6 +142,13 @@ const portfolioImages = [
   { src: desktopInventoryImage, alt: "Business desktop computers organized for IT deployments", title: "Desktop IT solutions" },
 ];
 
+const heroSlides = [
+  { src: carouselOneImage, alt: "Promotional banner for desktop computer rentals across India", title: "Desktop rentals across India" },
+  { src: carouselTwoImage, alt: "Promotional banner for laptops available to rent for business needs", title: "Laptop rentals for business" },
+  { src: carouselThreeImage, alt: "Promotional banner for printers, plotters and scanners available for rent", title: "Printers and scanners for rent" },
+  { src: carouselFourImage, alt: "Promotional banner for server rentals across India", title: "Server rentals across India" },
+];
+
 const steps = [
   { number: "01", title: "Tell us what you need", description: "Share your products, quantity, dates and location over WhatsApp." },
   { number: "02", title: "Get a clear quote", description: "We’ll help you choose the right setup and rental plan." },
@@ -163,6 +173,7 @@ const faqs = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
+  const [activeHeroSlide, setActiveHeroSlide] = useState(0);
 
   useEffect(() => {
     const revealItems = [...document.querySelectorAll("[data-reveal]")];
@@ -190,17 +201,24 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+
+    const carouselTimer = window.setInterval(() => {
+      setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
+    }, 5000);
+
+    return () => window.clearInterval(carouselTimer);
+  }, []);
+
   const closeMenu = () => setMenuOpen(false);
+  const showHeroSlide = (index) => {
+    setActiveHeroSlide((index + heroSlides.length) % heroSlides.length);
+  };
 
   return (
     <>
       <header className="site-header">
-        <div className="topline">
-          <div className="container topline-inner">
-            <span>Smart technology. Ready when you are.</span>
-            <a href="tel:+917862001700">Call us: +91 78620 01700</a>
-          </div>
-        </div>
         <div className="container nav-wrap">
           <a className="brand" href="#home" aria-label="SN Infosystem home" onClick={closeMenu}>
             <img src={logoAsset} alt="SN Infosystem" />
@@ -217,10 +235,12 @@ function App() {
             <span />
           </button>
           <nav className={menuOpen ? "main-nav is-open" : "main-nav"} aria-label="Main navigation">
-            <a href="#services" onClick={closeMenu}>What we offer</a>
-            <a href="#how-it-works" onClick={closeMenu}>How it works</a>
-            <a href="#work" onClick={closeMenu}>Our work</a>
-            <a href="#faq" onClick={closeMenu}>FAQs</a>
+            <div className="nav-links">
+              <a href="#services" onClick={closeMenu}>What we offer</a>
+              <a href="#how-it-works" onClick={closeMenu}>How it works</a>
+              <a href="#work" onClick={closeMenu}>Our work</a>
+              <a href="#faq" onClick={closeMenu}>FAQs</a>
+            </div>
             <a className="nav-cta" href={whatsappLink("Hi SN Infosystem, I'd like to get a quote.")} target="_blank" rel="noreferrer">
               Get a quote <span aria-hidden="true">↗</span>
             </a>
@@ -229,45 +249,29 @@ function App() {
       </header>
 
       <main>
-        <section className="hero container" id="home">
-          <div className="hero-copy" data-reveal>
-            <div className="eyebrow"><span className="eyebrow-dot" /> IT SALES · SERVICES · RENTALS</div>
-            <h1>Your trusted partner for <span>all things IT.</span></h1>
-            <p className="hero-description">
-              From business-class refurbished laptops and reliable repairs to CCTV,
-              networking and event technology, SN Infosystem brings complete IT
-              solutions together under one roof.
-            </p>
-            <div className="hero-actions">
-              <a className="button button-primary" href={whatsappLink("Hi SN Infosystem, I'd like a quote for a technology setup.")} target="_blank" rel="noreferrer">
-                Talk to our team <span aria-hidden="true">↗</span>
-              </a>
-              <a className="text-link" href="#services">Explore what we do <span aria-hidden="true">↓</span></a>
-            </div>
-            <div className="hero-note">
-              <span className="note-mark">✓</span>
-              <span>Quality-assured tech <i /> Local support <i /> Flexible rentals</span>
-            </div>
-          </div>
+        <section className="hero hero-carousel" id="home">
           <div className="hero-visual" data-reveal>
             <div className="visual-frame">
-              <video className="hero-video" autoPlay muted loop playsInline poster={eventSetupImage} aria-label="SN Infosystem technology solutions">
-                <source src={heroVideoAsset} type="video/mp4" />
-              </video>
-              <div className="video-shade" />
-              <div className="visual-label"><span className="live-dot" /> TECHNOLOGY, IN ACTION</div>
-              <div className="visual-caption">
-                <span>One partner for</span>
-                <strong>workdays &amp; big days.</strong>
+              <img
+                key={heroSlides[activeHeroSlide].title}
+                className="hero-slide"
+                src={heroSlides[activeHeroSlide].src}
+                alt={heroSlides[activeHeroSlide].alt}
+              />
+              <div className="slide-shade" />
+              <div className="carousel-indicators" aria-label="Choose a slide">
+                {heroSlides.map((slide, index) => (
+                  <button
+                    className={index === activeHeroSlide ? "carousel-indicator is-active" : "carousel-indicator"}
+                    type="button"
+                    aria-label={`Show slide ${index + 1}: ${slide.title}`}
+                    aria-current={index === activeHeroSlide ? "true" : undefined}
+                    onClick={() => showHeroSlide(index)}
+                    key={slide.title}
+                  />
+                ))}
               </div>
-              <a className="visual-arrow" href="#work" aria-label="See our work">↗</a>
             </div>
-            <div className="floating-card">
-              <div className="floating-icon"><Icon name="kiosk" size={22} /></div>
-              <div><strong>Event-ready setups</strong><span>From check-in to big screens</span></div>
-              <span className="floating-check">✓</span>
-            </div>
-            <div className="hero-stamp"><span>SMART</span><strong>SN</strong><span>TECH</span></div>
           </div>
         </section>
 
