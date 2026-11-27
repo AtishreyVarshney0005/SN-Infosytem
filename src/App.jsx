@@ -225,7 +225,7 @@ function App() {
             <span>SN <strong>INFOSYSTEM</strong></span>
           </a>
           <button
-            className="menu-toggle"
+            className={menuOpen ? "menu-toggle is-open" : "menu-toggle"}
             type="button"
             aria-label={menuOpen ? "Close navigation" : "Open navigation"}
             aria-expanded={menuOpen}
